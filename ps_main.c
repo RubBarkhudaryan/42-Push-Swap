@@ -11,10 +11,12 @@
 /* ************************************************************************** */
 
 #include "pushswap.h"
-#include <stdio.h>
 
-int	main(int argc, char **argv)
+int main(int argc, char **argv)
 {
-	printf("%s\n", ft_strncpy("hello world", 5, 10));
-	return (0);
+	if (argc >= 2 && is_valid_arg(argv, argc))
+		printf("valid args\n");
+	else
+		error_msg();
+	return 0;
 }

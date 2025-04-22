@@ -16,36 +16,55 @@ static int	words_count(char *str)
 {
 	int	i;
 	int	count;
-	int	in_word;
 
 	i = 0;
 	count = 0;
-	in_word = 0;
 	while (str[i])
 	{
-		while (ft_inset(str[i], "\n\t "))
+		while (ft_inset("\n\t ", str[i]))
 			++i;
-		while (!ft_inset(str[i], "\n\t "))
+		if (str[i] && !ft_inset("\n\t ", str[i]))
 		{
-			++in_word;
-			++i;
-		}
-		if (in_word)
-		{
-			in_word = 0;
 			++count;
+			while (str[i] && !ft_inset("\n\t ", str[i]))
+				++i;
 		}
-		if (str[i + 1])
-			++i;
 	}
 	return (count);
+}
+
+static int	fill(char **split, char *str, int start, int len)
+{
+	*split = ft_strncpy(str, start, len);
+	if (!(*split))
+		return (0);
+	return (1);
 }
 
 char	**ft_split(char *str)
 {
 	int		i;
 	int		j;
+	int		ind;
 	char	**split;
 
 	split = (char **)malloc(sizeof(char *) * (words_count(str) + 1));
+	if (!split)
+		return (NULL);
+	i = 0;
+	ind = 0;
+	while (str[i])
+	{
+		j = 0;
+		while (str[i] && ft_inset("\t\n ", str[i]))
+			++i;
+		while (str[i + j] && !ft_inset("\t\n ", str[i + j]))
+			++j;
+		if (j > 0)
+			if (!fill(&split[ind++], str, i, j))
+				return (free_split(&split, ind), NULL);
+		i += j;
+	}
+	split[ind] = NULL;
+	return (split);
 }

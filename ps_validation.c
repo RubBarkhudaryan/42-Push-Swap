@@ -46,22 +46,30 @@ static int	contains_duplicate(char **str)
 	return (0);
 }
 
-int	is_valid_arg(char **str)
+int	is_valid_arg(char **str, int len)
 {
-	int	i;
+	int		i;
+	char	*args;
+	char	**split;
 
-	if (contains_duplicate(str))
-		return (0);
 	i = 0;
-	while (str[i])
+	args = ft_strdup("");
+	while (++i < len)
+		args = ft_strjoin(&args, str[i]);
+	split = ft_split(args);
+	i = 0;
+	free(args);
+	while (split[i])
 	{
-		if (contains_alpha(str[i]))
-			return (0);
-		if (ft_strlen(str[i]) > 1 && str[i][0] == '0')
-			return (0);
-		if (ft_atoi(str[i]) == 0 && ft_strlen(str[i]) > 1)
-			return (0);
+		if (contains_alpha(split[i]))
+			return (free_split(&split, i), 0);
+		if (ft_strlen(split[i]) > 1 && split[i][0] == '0')
+			return (free_split(&split, i), 0);
+		if (ft_atoi(split[i]) == 0 && ft_strlen(split[i]) > 1)
+			return (free_split(&split, i), 0);
 		++i;
 	}
-	return (1);
+	if (contains_duplicate(split))
+		return (free_split(&split, i), 0);
+	return (free_split(&split, i), 1);
 }

@@ -34,29 +34,31 @@ int	ft_strlen(char *str)
 	return (i);
 }
 
-char	*ft_strjoin(char *str1, char *str2)
+char	*ft_strjoin(char **str1, char *str2)
 {
 	char	*res;
 	int		i;
 	int		j;
 
-	if (!str1 && !str2)
+	if (!*str1 && !str2)
 		return (NULL);
-	else if (!str1 && str2)
-		return (ft_strdup(str2));
-	else if (str1 && !str2)
-		return (ft_strdup(str1));
-	res = (char *)malloc(ft_strlen(str1) + ft_strlen(str2) + 1);
+	if (!str1)
+		return (ft_substr(str2, 0, ft_strlen(str2)));
+	if (!str2)
+		return (ft_substr(*str1, 0, ft_strlen(*str1)));
+	res = (char *)malloc(ft_strlen(*str1) + ft_strlen(str2) + 1);
 	if (!res)
 		return (NULL);
 	i = -1;
-	while (str1[++i])
-		res[i] = str1[i];
-	res[i++] = ' ';
+	while ((*str1)[++i])
+		res[i] = (*str1)[i];
+	if (i > 0)
+		res[i++] = ' ';
 	j = -1;
 	while (str2[++j])
 		res[i + j] = str2[j];
-	return (res[i + j] = '\0', res);
+	res[i + j] = '\0';
+	return (free(*str1), res);
 }
 
 char	*ft_strdup(char *str)
