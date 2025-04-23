@@ -1,7 +1,7 @@
 NAME	=	push_swap
 
 CC		=	cc
-CFLAGS	=	-Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS	=	-Wall -Wextra -Werror -g
 
 SRCS	=	ps_main.c ps_validation.c ps_utils.c ps_libft_funcs.c ps_libft_funcs_2.c\
 			ps_ft_split.c
