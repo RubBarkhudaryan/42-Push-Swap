@@ -12,11 +12,18 @@
 
 #include "pushswap.h"
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
+	char	**split;
+
+	split = NULL;
 	if (argc >= 2 && is_valid_arg(argv, argc))
-		printf("valid args\n");
+	{
+		// split = format_arguments(argv, argc);
+		// if (!split)
+		// 	ft_error(NULL);
+	}
 	else
-		error_msg();
-	return 0;
+		ft_error(NULL);
+	return (0);
 }

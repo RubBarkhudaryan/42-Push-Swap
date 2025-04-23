@@ -62,7 +62,7 @@ char	**ft_split(char *str)
 			++j;
 		if (j > 0)
 			if (!fill(&split[ind++], str, i, j))
-				return (free_split(&split, ind), NULL);
+				return (free_split(&split), NULL);
 		i += j;
 	}
 	split[ind] = NULL;

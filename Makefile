@@ -1,7 +1,7 @@
-NAME	=	pushswap
+NAME	=	push_swap
 
 CC		=	cc
-CFLAGS	=	-Wall -Wextra -Werror
+CFLAGS	=	-Wall -Wextra -Werror -g -fsanitize=address
 
 SRCS	=	ps_main.c ps_validation.c ps_utils.c ps_libft_funcs.c ps_libft_funcs_2.c\
 			ps_ft_split.c
@@ -10,8 +10,8 @@ OBJS	=	$(SRCS:%.c=%.o)
 
 all: $(NAME)
 
-$(NAME):
-	$(CC) $(CFLAGS) $(SRCS) -g
+$(NAME) : $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@

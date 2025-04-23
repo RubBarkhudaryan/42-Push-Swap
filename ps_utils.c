@@ -12,22 +12,30 @@
 
 #include "pushswap.h"
 
-void	error_msg(void)
+void	ft_error(char **str)
 {
+	if (str)
+		free_split(&str);
 	write (2, "Error\n", 6);
+	exit(EXIT_FAILURE);
 }
 
-void	free_split(char ***split, int target_ind)
+void	free_split(char ***split)
 {
 	int	i;
 
 	if (!*split)
 		return ;
-	i = 0;
-	while (i <= target_ind)
-	{
+	i = -1;
+	while ((*split)[++i])
 		free((*split)[i]);
-		++i;
-	}
 	free(*split);
 }
+
+// t_stack	*format_arguments(char **argv, int argc)
+// {
+// 	char	*join;
+// 	char	**split;
+
+// 	join = join_args()
+// }
