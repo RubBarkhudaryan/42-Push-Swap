@@ -19,9 +19,6 @@ int	main(int argc, char **argv)
 	split = NULL;
 	if (argc >= 2 && is_valid_arg(argv, argc))
 	{
-		// split = format_arguments(argv, argc);
-		// if (!split)
-		// 	ft_error(NULL);
 	}
 	else
 		ft_error(NULL);

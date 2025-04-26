@@ -6,7 +6,7 @@
 /*   By: rbarkhud <rbarkhud@student.42yerevan.am    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 17:56:43 by rbarkhud          #+#    #+#             */
-/*   Updated: 2025/04/26 19:53:30 by rbarkhud         ###   ########.fr       */
+/*   Updated: 2025/04/26 20:02:33 by rbarkhud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	push(t_node **in, t_node **out)
 
 void	pa(t_stack **stack)
 {
-	if(!push(&(*stack)->b, &(*stack)->a))
+	if (!push(&(*stack)->b, &(*stack)->a))
 		return ;
 	print_operation("pa\n");
 }

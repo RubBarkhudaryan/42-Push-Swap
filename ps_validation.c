@@ -100,28 +100,28 @@ char	*join_args(int argc, char **argv)
 int	is_valid_arg(char **str, int len)
 {
 	int		i;
+	int		ln;
 	char	*join;
-	char	**split;
+	char	**sp;
 
 	join = join_args(len, str);
 	if (!join)
 		return (0);
-	split = ft_split(join);
+	sp = ft_split(join);
 	i = -1;
-	while (split[++i])
+	while (sp[++i])
 	{
-		if (contains_alpha(split[i]))
-			ft_error(split);
-		if (ft_strlen(split[i]) > 1 && split[i][0] == '0')
-			ft_error(split);
-		if ((ft_atoi(split[i]) == 0 && ft_strlen(split[i]) > 1)\
-			|| (ft_atoi(split[i]) && ft_strlen(split[i]) > 1 && \
-			ft_inset("+-", split[i][ft_strlen(split[i]) - 1])))
-				ft_error(split);
-		if ((ft_strcmp(split[i], "-") == 0) || (ft_strcmp(split[i], "+") == 0))
-			ft_error(split);
+		ln = ft_strlen(sp[i]);
+		if (contains_alpha(sp[i]))
+			ft_error(sp);
+		if (ft_strlen(sp[i]) > 1 && sp[i][0] == '0')
+			ft_error(sp);
+		if ((ft_atoi(sp[i]) == 0 && ln > 1) || (ft_atoi(sp[i]) && ln > 1 && ft_inset("+-", sp[i][ln - 1])))
+			ft_error(sp);
+		if ((ft_strcmp(sp[i], "-") == 0) || (ft_strcmp(sp[i], "+") == 0))
+			ft_error(sp);
 	}
-	if (contains_duplicate(split))
-		ft_error(split);
+	if (contains_duplicate(sp))
+		ft_error(sp);
 	return (free(join), 1);
 }

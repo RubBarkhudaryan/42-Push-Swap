@@ -6,7 +6,7 @@
 /*   By: rbarkhud <rbarkhud@student.42yerevan.am    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 17:56:26 by rbarkhud          #+#    #+#             */
-/*   Updated: 2025/04/26 19:52:39 by rbarkhud         ###   ########.fr       */
+/*   Updated: 2025/04/26 20:13:45 by rbarkhud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ void	sa(t_stack **stack, int print)
 	first->next = second->next;
 	second->next = first;
 	(*stack)->a = second;
-	print_operation("sa\n");
+	if (print)
+		print_operation("sa\n");
 }
 
 void	sb(t_stack **stack, int print)
@@ -39,7 +40,8 @@ void	sb(t_stack **stack, int print)
 	first->next = second->next;
 	second->next = first;
 	(*stack)->b = second;
-	print_operation("sb\n");
+	if (print)
+		print_operation("sb\n");
 }
 
 void	ss(t_stack **stack)
