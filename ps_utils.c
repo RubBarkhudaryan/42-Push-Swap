@@ -32,10 +32,7 @@ void	free_split(char ***split)
 	free(*split);
 }
 
-// t_stack	*format_arguments(char **argv, int argc)
-// {
-// 	char	*join;
-// 	char	**split;
-
-// 	join = join_args()
-// }
+void	print_operation(char *operation)
+{
+	write (1, operation, ft_strlen(operation));
+}

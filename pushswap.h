@@ -19,10 +19,16 @@
 # include <limits.h>
 # include <stdio.h>
 
-typedef struct stack
+typedef struct s_node
 {
-	int		val;
-	struct stack	*next;
+	int				val;
+	struct s_node	*next;
+}	t_node;
+
+typedef struct s_stack
+{
+	t_node	*a;
+	t_node	*b;
 }	t_stack;
 
 /*libft functions*/
@@ -46,7 +52,25 @@ char	*join_args(int argc, char **argv);
 
 void	ft_error(char **str);
 void	free_split(char ***split);
+void	print_operation(char *operation);
 
-t_stack	*format_arguments(char **argv, int argc);
+/*swap instructions*/
+void	sa(t_stack **stack, int print);
+void	sb(t_stack **stack, int print);
+void	ss(t_stack **stack);
+
+/*push instructions*/
+void	pa(t_stack **stack);
+void	pb(t_stack **stack);
+
+/*rotate instructions*/
+void	ra(t_stack **stack, int print);
+void	rb(t_stack **stack, int print);
+void	rr(t_stack **stack);
+
+/*reverse rotate instructions*/
+void	rra(t_stack **stack, int print);
+void	rrb(t_stack **stack, int print);
+void	rrr(t_stack **stack);
 
 #endif

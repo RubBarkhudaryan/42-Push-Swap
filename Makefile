@@ -3,8 +3,10 @@ NAME	=	push_swap
 CC		=	cc
 CFLAGS	=	-Wall -Wextra -Werror -g
 
-SRCS	=	ps_main.c ps_validation.c ps_utils.c ps_libft_funcs.c ps_libft_funcs_2.c\
-			ps_ft_split.c
+SRCS	=	ps_main.c \
+			ps_validation.c ps_utils.c\
+			ps_ft_split.c ps_libft_funcs.c ps_libft_funcs_2.c\
+			ps_push_operations.c ps_swap_operations.c ps_rotate_operations.c ps_reverse_rotate_operations.c
 
 OBJS	=	$(SRCS:%.c=%.o)
 
