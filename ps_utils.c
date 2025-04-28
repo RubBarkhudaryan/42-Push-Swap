@@ -12,10 +12,12 @@
 
 #include "pushswap.h"
 
-void	ft_error(char **str)
+void	ft_error(char **split, char **str)
 {
+	if (split)
+		free_split(&split);
 	if (str)
-		free_split(&str);
+		free(*str);
 	write (2, "Error\n", 6);
 	exit(EXIT_FAILURE);
 }

@@ -31,6 +31,12 @@ typedef struct s_stack
 	t_node	*b;
 }	t_stack;
 
+typedef struct s_line
+{
+	char	*ln;
+	char	**sp;
+}	t_line;
+
 /*libft functions*/
 int		ft_atoi(char *str);
 int		ft_inset(char *str, char c);
@@ -46,11 +52,13 @@ char	**ft_split(char *str);
 char	*ft_substr(char *str, unsigned int start, size_t len);
 
 /*push swap utils*/
-int		is_valid_arg(char **str, int len);
+int		is_valid_arg(char **str, int len, char ***spl);
+int		stack_length(t_stack *stack);
 
 char	*join_args(int argc, char **argv);
+t_stack	*init_stack(char **split, int len);
 
-void	ft_error(char **str);
+void	ft_error(char **split, char **str);
 void	free_split(char ***split);
 void	print_operation(char *operation);
 
@@ -72,5 +80,11 @@ void	rr(t_stack **stack);
 void	rra(t_stack **stack, int print);
 void	rrb(t_stack **stack, int print);
 void	rrr(t_stack **stack);
+
+/*push swap sorting algorithms*/
+void	sort_2(t_stack *stack);
+void	sort_3(t_stack *stack);
+void	sort_4(t_stack *stack);
+void	sort_5(t_stack *stack);
 
 #endif

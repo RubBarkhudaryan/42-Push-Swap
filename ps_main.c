@@ -14,13 +14,22 @@
 
 int	main(int argc, char **argv)
 {
+	t_stack	*stack;
 	char	**split;
 
 	split = NULL;
-	if (argc >= 2 && is_valid_arg(argv, argc))
+	if (argc >= 2 && is_valid_arg(argv, argc, &split))
 	{
+		stack = init_stack(split, argc - 1);
+		free_split(&split);
+		sort_2(stack);
+		while (stack->a)
+		{
+			printf("val: %d\n", stack->a->val);
+			stack->a = stack->a->next;
+		}
 	}
 	else
-		ft_error(NULL);
+		ft_error(NULL, NULL);
 	return (0);
 }
