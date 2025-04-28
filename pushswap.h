@@ -22,6 +22,7 @@
 typedef struct s_node
 {
 	int				val;
+	int				index;
 	struct s_node	*next;
 }	t_node;
 
@@ -30,12 +31,6 @@ typedef struct s_stack
 	t_node	*a;
 	t_node	*b;
 }	t_stack;
-
-typedef struct s_line
-{
-	char	*ln;
-	char	**sp;
-}	t_line;
 
 /*libft functions*/
 int		ft_atoi(char *str);
@@ -59,8 +54,9 @@ char	*join_args(int argc, char **argv);
 char	**split_args(int argc, char **argv);
 t_stack	*init_stack(char **split, int len);
 
-void	ft_error(char **split, char **str);
+void	ft_error(char **split);
 void	free_split(char ***split);
+void	free_stack(t_stack *stack);
 void	print_operation(char *operation);
 
 /*swap instructions*/
@@ -83,11 +79,11 @@ void	rrb(t_stack **stack, int print);
 void	rrr(t_stack **stack);
 
 /*push swap sorting algorithms*/
-// void	sort(t_stack *stack);
-t_stack	*sort_2(t_stack *stack);
-t_stack	*sort_3(t_stack *stack);
-// void	sort_4(t_stack **stack);
-// void	sort_5(t_stack **stack);
-// void	sort_stack(t_stack **stack);
+void	sort_stack(t_stack *stack);
+void	sort_2(t_stack *stack);
+void	sort_3(t_stack *stack);
+void	sort_4(t_stack *stack);
+void	sort_5(t_stack **stack);
+void	big_sort(t_stack **stack);
 
 #endif

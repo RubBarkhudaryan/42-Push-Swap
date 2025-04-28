@@ -12,12 +12,10 @@
 
 #include "pushswap.h"
 
-void	ft_error(char **split, char **str)
+void	ft_error(char **split)
 {
 	if (split)
 		free_split(&split);
-	if (str)
-		free(*str);
 	write (2, "Error\n", 6);
 	exit(EXIT_FAILURE);
 }
@@ -34,6 +32,28 @@ void	free_split(char ***split)
 	free(*split);
 }
 
+void	free_stack(t_stack *stack)
+{
+	t_node	*tmp;
+	t_node	*next;
+
+	tmp = stack->a;
+	while (tmp)
+	{
+		next = tmp->next;
+		free(tmp);
+		tmp = next;
+	}
+	tmp = stack->b;
+	while (tmp)
+	{
+		next = tmp->next;
+		free(tmp);
+		tmp = next;
+	}
+	free(stack);
+}
+
 void	print_operation(char *operation)
 {
 	write (1, operation, ft_strlen(operation));
@@ -41,10 +61,11 @@ void	print_operation(char *operation)
 
 char	**split_args(int argc, char **argv)
 {
-	t_line	line;
+	char	*join;
+	char	**split;
 
-	line.ln = join_args(argc, argv);
-	line.sp = ft_split(line.ln);
-	free(line.ln);
-	return (line.sp);
+	join = join_args(argc, argv);
+	split = ft_split(join);
+	free(join);
+	return (split);
 }
