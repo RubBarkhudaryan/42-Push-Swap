@@ -97,7 +97,7 @@ char	*join_args(int argc, char **argv)
 	return (join);
 }
 
-int	is_valid_arg(char **str, int len_, char ***spl)
+int	is_valid_arg(char **str, int len_)
 {
 	int		i;
 	int		len;
@@ -123,5 +123,5 @@ int	is_valid_arg(char **str, int len_, char ***spl)
 	}
 	if (contains_duplicate(ln.sp))
 		ft_error(ln.sp, &ln.ln);
-	return (free(ln.ln), *spl = ln.sp, 1);
+	return (free(ln.ln), free_split(&ln.sp), 1);
 }

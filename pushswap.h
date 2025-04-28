@@ -52,10 +52,11 @@ char	**ft_split(char *str);
 char	*ft_substr(char *str, unsigned int start, size_t len);
 
 /*push swap utils*/
-int		is_valid_arg(char **str, int len, char ***spl);
+int		is_valid_arg(char **str, int len);
 int		stack_length(t_stack *stack);
 
 char	*join_args(int argc, char **argv);
+char	**split_args(int argc, char **argv);
 t_stack	*init_stack(char **split, int len);
 
 void	ft_error(char **split, char **str);
@@ -82,9 +83,11 @@ void	rrb(t_stack **stack, int print);
 void	rrr(t_stack **stack);
 
 /*push swap sorting algorithms*/
-void	sort_2(t_stack *stack);
-void	sort_3(t_stack *stack);
-void	sort_4(t_stack *stack);
-void	sort_5(t_stack *stack);
+// void	sort(t_stack *stack);
+t_stack	*sort_2(t_stack *stack);
+t_stack	*sort_3(t_stack *stack);
+// void	sort_4(t_stack **stack);
+// void	sort_5(t_stack **stack);
+// void	sort_stack(t_stack **stack);
 
 #endif

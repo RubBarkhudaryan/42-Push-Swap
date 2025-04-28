@@ -12,22 +12,27 @@
 
 #include "pushswap.h"
 
+static t_stack	*sort(t_stack *stack)
+{
+	int	len;
+
+	len = stack_length(stack);
+	if (len == 1)
+		return (stack);
+	else if (len == 2)
+		return sort_2(stack);
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack	*stack;
 	char	**split;
 
-	split = NULL;
-	if (argc >= 2 && is_valid_arg(argv, argc, &split))
+	if (argc >= 2 && is_valid_arg(argv, argc))
 	{
-		stack = init_stack(split, argc - 1);
+		split = split_args(argc, argv);
 		free_split(&split);
-		sort_2(stack);
-		while (stack->a)
-		{
-			printf("val: %d\n", stack->a->val);
-			stack->a = stack->a->next;
-		}
+		// stack = init_stack(split, argc - 1);
 	}
 	else
 		ft_error(NULL, NULL);

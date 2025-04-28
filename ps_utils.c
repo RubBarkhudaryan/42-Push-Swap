@@ -38,3 +38,13 @@ void	print_operation(char *operation)
 {
 	write (1, operation, ft_strlen(operation));
 }
+
+char	**split_args(int argc, char **argv)
+{
+	t_line	line;
+
+	line.ln = join_args(argc, argv);
+	line.sp = ft_split(line.ln);
+	free(line.ln);
+	return (line.sp);
+}
