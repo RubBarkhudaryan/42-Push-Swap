@@ -12,11 +12,22 @@
 
 #include "pushswap.h"
 
+static void	print_stack(t_node *lst)
+{
+	t_node *tmp = lst;
+	while (tmp)
+	{
+		printf("val: %d, index: %d\n", tmp->val, tmp->index);
+		tmp = tmp->next;
+	}
+}
+
 void	sort_stack(t_stack *stack)
 {
 	int	len;
 
-	len = stack_length(stack);
+	assign_indexes(stack->a);
+	len = stack_length(stack->a);
 	if (len == 1)
 		return ;
 	else if (len == 2)
@@ -27,11 +38,8 @@ void	sort_stack(t_stack *stack)
 		sort_4(stack);
 	else if (len == 5)
 		sort_5(&stack);
-	// else
-	// {
-	// 	index_stack(stack);
-	// 	butterfly_sort(&stack);
-	// }
+	else
+		butterfly_sort(stack);
 }
 
 int	main(int argc, char **argv)
@@ -44,12 +52,7 @@ int	main(int argc, char **argv)
 		split = split_args(argc, argv);
 		stack = init_stack(split);
 		sort_stack(stack);
-		// t_node *tmp = stack->a;
-		// while (tmp)
-		// {
-		// 	printf("%d\n", tmp->val);
-		// 	tmp = tmp->next;
-		// }
+		print_stack(stack->a);
 		free_split(&split);
 		free_stack(stack);
 	}

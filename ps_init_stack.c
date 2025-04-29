@@ -6,7 +6,7 @@
 /*   By: rbarkhud <rbarkhud@student.42yerevan.am    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 17:41:02 by rbarkhud          #+#    #+#             */
-/*   Updated: 2025/04/29 16:08:15 by rbarkhud         ###   ########.fr       */
+/*   Updated: 2025/04/29 20:31:02 by rbarkhud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,15 +60,15 @@ t_stack	*init_stack(char **split)
 	return (stack);
 }
 
-int	stack_length(t_stack *stack)
+int	stack_length(t_node *stack)
 {
 	int		size;
 	t_node	*tmp;
 
-	if (!stack || !stack->a)
+	if (!stack)
 		return (0);
 	size = 0;
-	tmp = stack->a;
+	tmp = stack;
 	while (tmp)
 	{
 		++size;

@@ -48,7 +48,7 @@ char	*ft_substr(char *str, unsigned int start, size_t len);
 
 /*push swap utils*/
 int		is_valid_arg(char **str, int len);
-int		stack_length(t_stack *stack);
+int		stack_length(t_node *stack);
 
 char	*join_args(int argc, char **argv);
 char	**split_args(int argc, char **argv);
@@ -80,12 +80,13 @@ void	rrr(t_stack **stack);
 
 /*push swap sorting algorithms*/
 void	sort_stack(t_stack *stack);
+
 void	sort_2(t_stack *stack);
 void	sort_3(t_stack *stack);
 void	sort_4(t_stack *stack);
 void	sort_5(t_stack **stack);
-void	butterfly_sort(t_stack **stack);
 
-void	index_stack(t_stack *stack);
+void	assign_indexes(t_node *head);
+void	butterfly_sort(t_stack *stack);
 
 #endif
