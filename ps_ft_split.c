@@ -19,6 +19,8 @@ static int	words_count(char *str)
 
 	i = 0;
 	count = 0;
+	if (str[0] == '\0')
+		return (0);
 	while (str[i])
 	{
 		while (ft_inset("\n\t ", str[i]))
@@ -65,6 +67,5 @@ char	**ft_split(char *str)
 				return (free_split(&split), NULL);
 		i += j;
 	}
-	split[ind] = NULL;
-	return (split);
+	return (split[ind] = NULL, split);
 }
