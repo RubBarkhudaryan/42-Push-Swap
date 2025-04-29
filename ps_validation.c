@@ -37,10 +37,10 @@ static int	contains_duplicate(char **str)
 	while (str[i])
 	{
 		j = i + 1;
-		k = 0;
-		t = 0;
 		while (str[j])
 		{
+			k = 0;
+			t = 0;
 			while (str[i][k] && (str[i][k] == '+'))
 				++k;
 			while (str[j][t] && (str[j][t] == '+'))
@@ -114,8 +114,8 @@ int	is_valid_arg(char **str, int len)
 		if (ft_strlen(split[i]) > 1 && split[i][0] == '0')
 			return (ft_error(split), 0);
 		if ((ft_atoi(split[i]) == 0 && ft_strlen(split[i]) > 1) || \
-	(ft_atoi(split[i]) && ft_strlen(split[i]) > 1 && \
-	ft_inset("+-", split[i][ft_strlen(split[i]) - 1])))
+(ft_atoi(split[i]) && ft_strlen(split[i]) > 1 && \
+ft_inset("+-", split[i][ft_strlen(split[i]) - 1])))
 			return (ft_error(split), 0);
 		if ((ft_strcmp(split[i], "-") == 0) || (ft_strcmp(split[i], "+") == 0))
 			return (ft_error(split), 0);

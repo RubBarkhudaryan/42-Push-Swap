@@ -52,7 +52,7 @@ int		stack_length(t_stack *stack);
 
 char	*join_args(int argc, char **argv);
 char	**split_args(int argc, char **argv);
-t_stack	*init_stack(char **split, int len);
+t_stack	*init_stack(char **split);
 
 void	ft_error(char **split);
 void	free_split(char ***split);
@@ -84,6 +84,8 @@ void	sort_2(t_stack *stack);
 void	sort_3(t_stack *stack);
 void	sort_4(t_stack *stack);
 void	sort_5(t_stack **stack);
-void	big_sort(t_stack **stack);
+void	butterfly_sort(t_stack **stack);
+
+void	index_stack(t_stack *stack);
 
 #endif

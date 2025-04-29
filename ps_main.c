@@ -27,8 +27,11 @@ void	sort_stack(t_stack *stack)
 		sort_4(stack);
 	else if (len == 5)
 		sort_5(&stack);
-	else
-		big_sort(&stack);
+	// else
+	// {
+	// 	index_stack(stack);
+	// 	butterfly_sort(&stack);
+	// }
 }
 
 int	main(int argc, char **argv)
@@ -39,9 +42,8 @@ int	main(int argc, char **argv)
 	if (argc >= 2 && is_valid_arg(argv, argc))
 	{
 		split = split_args(argc, argv);
-		stack = init_stack(split, argc - 1);
+		stack = init_stack(split);
 		sort_stack(stack);
-		// pb(&stack);
 		// t_node *tmp = stack->a;
 		// while (tmp)
 		// {

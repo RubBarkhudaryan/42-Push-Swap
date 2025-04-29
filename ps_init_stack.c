@@ -6,7 +6,7 @@
 /*   By: rbarkhud <rbarkhud@student.42yerevan.am    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 17:41:02 by rbarkhud          #+#    #+#             */
-/*   Updated: 2025/04/29 02:16:41 by rbarkhud         ###   ########.fr       */
+/*   Updated: 2025/04/29 16:08:15 by rbarkhud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@ static void	push_back(t_node **lst, t_node *node)
 	temp->next = node;
 }
 
-static void	fill_stack(t_stack *stack, int len, char **split)
+static void	fill_stack(t_stack *stack, char **split)
 {
 	int		i;
 	t_node	*new_node;
 
 	i = 0;
-	while (i < len)
+	while (split[i])
 	{
 		new_node = malloc(sizeof(t_node));
 		if (!new_node)
@@ -47,7 +47,7 @@ static void	fill_stack(t_stack *stack, int len, char **split)
 	}
 }
 
-t_stack	*init_stack(char **split, int len)
+t_stack	*init_stack(char **split)
 {
 	t_stack	*stack;
 
@@ -56,7 +56,7 @@ t_stack	*init_stack(char **split, int len)
 		return (NULL);
 	stack->a = NULL;
 	stack->b = NULL;
-	fill_stack(stack, len, split);
+	fill_stack(stack, split);
 	return (stack);
 }
 

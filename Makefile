@@ -1,7 +1,7 @@
 NAME	=	push_swap
 
 CC		=	cc
-CFLAGS	=	 -g
+CFLAGS	=	-Wall -Wextra -Werror -g
 
 SRCS	=	ps_main.c\
 			ps_validation.c ps_utils.c ps_init_stack.c ps_sort_stack.c ps_sort_little_stack.c\
