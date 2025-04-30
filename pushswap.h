@@ -17,7 +17,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
-# include <stdio.h>
 
 typedef struct s_node
 {
@@ -80,13 +79,11 @@ void	rrr(t_stack **stack);
 
 /*push swap sorting algorithms*/
 void	sort_stack(t_stack *stack);
-
 void	sort_2(t_stack *stack);
 void	sort_3(t_stack *stack);
 void	sort_4(t_stack *stack);
 void	sort_5(t_stack **stack);
-
 void	assign_indexes(t_node *head);
-void	butterfly_sort(t_stack *stack);
+void	butterfly_sort(t_stack *stack, int len);
 
 #endif

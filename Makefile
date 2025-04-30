@@ -1,4 +1,5 @@
 NAME	=	push_swap
+CHECKER	=	checker
 
 CC		=	cc
 CFLAGS	=	-Wall -Wextra -Werror -g
@@ -9,22 +10,28 @@ SRCS	=	ps_main.c\
 			ps_ft_split.c ps_libft_funcs.c ps_libft_funcs_2.c\
 			ps_push_operations.c ps_swap_operations.c ps_rotate_operations.c ps_reverse_rotate_operations.c
 
+BSRCS	=	bonus/ch_main_bonus.c
+
 OBJS	=	$(SRCS:%.c=%.o)
+BOBJS	=	$(BSRCS:%.c=%.o)
 
 all: $(NAME)
 
 $(NAME) : $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
+bonus: $(BOBJS)
+	$(CC) $(CFLAGS) $(BOBJS) -o $(CHECKER)
+
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJS)
+	rm -f $(OBJS) $(BOBJS)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) $(CHECKER)
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus

@@ -6,7 +6,7 @@
 /*   By: rbarkhud <rbarkhud@student.42yerevan.am    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 19:36:43 by rbarkhud          #+#    #+#             */
-/*   Updated: 2025/04/29 20:34:17 by rbarkhud         ###   ########.fr       */
+/*   Updated: 2025/04/30 16:38:59 by rbarkhud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,57 +33,91 @@ static int	chunk_size(int nb)
 	return (sqrt + log - 1);
 }
 
-static int	rot_frwd(t_node *node, int target_idx, int size)
+static int	pos_in_list(int index, t_node *list)
 {
-	int	steps;
+	int	i;
+	t_node	*tmp;
 
-	steps = 0;
-	while (node && node->index != target_idx)
+	tmp = list;
+	i = 0;
+	while (tmp)
 	{
-		node = node->next;
-		++steps;
+		if (tmp->index == index)
+			return (i);
+		++i;
+		tmp = tmp->next;
 	}
-	return (steps <= size / 2);
+	return (-1);
 }
 
-static void	reverse_push(t_stack *stack, int max_idx)
+static int	max_index(t_node *list)
 {
-	int	rotate_forward;
+	int		max;
+	int		index;
+	t_node	*tmp;
+
+	tmp = list;
+	index = tmp->index;
+	max = tmp->val;
+	while (tmp)
+	{
+		if (max < tmp->val)
+		{
+			index = tmp->index;
+			max = tmp->val;
+		}
+		tmp = tmp->next;
+	}
+	return (index);
+}
+
+void	sort_max(t_stack *stack, int n)
+{
+	int	index;
+	int	pos;
 
 	while (stack->b)
 	{
-		rotate_forward = rot_frwd(stack->b, max_idx, stack_length(stack->b));
-		if (rotate_forward)
-			while (stack->b->index != max_idx)
+		index = max_index(stack->b);
+		pos = pos_in_list(index, stack->b);
+		if (pos < n / 2)
+		{
+			while (stack->b->index != index)
 				rb(&stack, 1);
+		}
 		else
-			while (stack->b->index != max_idx)
+		{
+			while (stack->b->index != index)
 				rrb(&stack, 1);
+		}
 		pa(&stack);
-		max_idx--;
+		--n;
 	}
 }
 
-void	butterfly_sort(t_stack *stack)
+void	butterfly_sort(t_stack *stack, int len)
 {
-	int	size;
 	int	counter;
-	int	total;
+	int	n;
 
-	total = stack_length(stack->a);
-	size = chunk_size(total);
+	n = chunk_size(len);
 	counter = 0;
+	stack->b = NULL;
 	while (stack->a)
 	{
-		if (stack->a->index <= counter + size)
+		if (stack->a->index <= counter)
 		{
 			pb(&stack);
-			if (stack->a->index <= counter)
-				rb(&stack, 1);
-			counter++;
+			rb(&stack, 1);
+			++counter;
+		}
+		else if (stack->a->index <= (counter + n))
+		{
+			pb(&stack);
+			++counter;
 		}
 		else
 			ra(&stack, 1);
 	}
-	reverse_push(stack, total - 1);
+	sort_max(stack, len);
 }
