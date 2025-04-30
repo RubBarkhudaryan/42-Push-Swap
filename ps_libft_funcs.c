@@ -66,6 +66,8 @@ char	*ft_strdup(char *str)
 	int		i;
 	char	*dup;
 
+	if (!str)
+		return (NULL);
 	dup = (char *)malloc(ft_strlen(str) + 1);
 	if (!dup)
 		return (NULL);

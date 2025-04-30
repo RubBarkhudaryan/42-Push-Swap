@@ -61,21 +61,21 @@ void	print_operation(char *operation);
 /*swap instructions*/
 void	sa(t_stack **stack, int print);
 void	sb(t_stack **stack, int print);
-void	ss(t_stack **stack);
+void	ss(t_stack **stack, int print);
 
 /*push instructions*/
-void	pa(t_stack **stack);
-void	pb(t_stack **stack);
+void	pa(t_stack **stack, int print);
+void	pb(t_stack **stack, int print);
 
 /*rotate instructions*/
 void	ra(t_stack **stack, int print);
 void	rb(t_stack **stack, int print);
-void	rr(t_stack **stack);
+void	rr(t_stack **stack, int print);
 
 /*reverse rotate instructions*/
 void	rra(t_stack **stack, int print);
 void	rrb(t_stack **stack, int print);
-void	rrr(t_stack **stack);
+void	rrr(t_stack **stack, int print);
 
 /*push swap sorting algorithms*/
 void	sort_stack(t_stack *stack);

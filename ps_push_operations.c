@@ -6,7 +6,7 @@
 /*   By: rbarkhud <rbarkhud@student.42yerevan.am    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 17:56:43 by rbarkhud          #+#    #+#             */
-/*   Updated: 2025/04/26 20:02:33 by rbarkhud         ###   ########.fr       */
+/*   Updated: 2025/04/30 18:07:20 by rbarkhud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,18 @@ static int	push(t_node **in, t_node **out)
 	return (1);
 }
 
-void	pa(t_stack **stack)
+void	pa(t_stack **stack, int print)
 {
 	if (!push(&(*stack)->b, &(*stack)->a))
 		return ;
-	print_operation("pa\n");
+	if (print)
+		print_operation("pa\n");
 }
 
-void	pb(t_stack **stack)
+void	pb(t_stack **stack, int print)
 {
 	if (!push(&(*stack)->a, &(*stack)->b))
 		return ;
-	print_operation("pb\n");
+	if (print)
+		print_operation("pb\n");
 }

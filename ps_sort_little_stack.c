@@ -6,7 +6,7 @@
 /*   By: rbarkhud <rbarkhud@student.42yerevan.am    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 23:59:54 by rbarkhud          #+#    #+#             */
-/*   Updated: 2025/04/30 14:23:25 by rbarkhud         ###   ########.fr       */
+/*   Updated: 2025/04/30 18:08:44 by rbarkhud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,9 @@ void	sort_4(t_stack *stack)
 	}
 	else if (min_pos == 3)
 		rra(&stack, 1);
-	pb(&stack);
+	pb(&stack, 1);
 	sort_3(stack);
-	pa(&stack);
+	pa(&stack, 1);
 }
 
 void	sort_5(t_stack **stack)
@@ -107,7 +107,7 @@ void	sort_5(t_stack **stack)
 	}
 	else if (min_pos == 4)
 		rra(stack, 1);
-	pb(stack);
+	pb(stack, 1);
 	min_pos = find_min_position((*stack)->a);
 	if (min_pos == 1)
 		ra(stack, 1);
@@ -118,8 +118,8 @@ void	sort_5(t_stack **stack)
 	}
 	else if (min_pos == 3)
 		rra(stack, 1);
-	pb(stack);
+	pb(stack, 1);
 	sort_3(*stack);
-	pa(stack);
-	pa(stack);
+	pa(stack, 1);
+	pa(stack, 1);
 }

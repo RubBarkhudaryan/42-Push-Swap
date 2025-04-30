@@ -6,7 +6,7 @@
 /*   By: rbarkhud <rbarkhud@student.42yerevan.am    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 19:31:36 by rbarkhud          #+#    #+#             */
-/*   Updated: 2025/04/26 19:52:49 by rbarkhud         ###   ########.fr       */
+/*   Updated: 2025/04/30 18:12:34 by rbarkhud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,10 @@ void	rrb(t_stack **stack, int print)
 		print_operation("rrb\n");
 }
 
-void	rrr(t_stack **stack)
+void	rrr(t_stack **stack, int print)
 {
 	rra(stack, 0);
 	rrb(stack, 0);
-	print_operation("rrr\n");
+	if (print)
+		print_operation("rrr\n");
 }

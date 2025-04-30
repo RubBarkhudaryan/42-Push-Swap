@@ -6,7 +6,7 @@
 /*   By: rbarkhud <rbarkhud@student.42yerevan.am    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 19:36:43 by rbarkhud          #+#    #+#             */
-/*   Updated: 2025/04/30 16:38:59 by rbarkhud         ###   ########.fr       */
+/*   Updated: 2025/04/30 18:09:24 by rbarkhud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	sort_max(t_stack *stack, int n)
 			while (stack->b->index != index)
 				rrb(&stack, 1);
 		}
-		pa(&stack);
+		pa(&stack, 1);
 		--n;
 	}
 }
@@ -107,13 +107,13 @@ void	butterfly_sort(t_stack *stack, int len)
 	{
 		if (stack->a->index <= counter)
 		{
-			pb(&stack);
+			pb(&stack, 1);
 			rb(&stack, 1);
 			++counter;
 		}
 		else if (stack->a->index <= (counter + n))
 		{
-			pb(&stack);
+			pb(&stack, 1);
 			++counter;
 		}
 		else
