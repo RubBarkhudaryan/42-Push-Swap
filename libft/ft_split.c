@@ -10,7 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pushswap.h"
+#include "libft.h"
+
+static void	free_split(char ***split)
+{
+	int	i;
+
+	if (!*split)
+		return ;
+	i = -1;
+	while ((*split)[++i])
+		free((*split)[i]);
+	free(*split);
+}
 
 static int	words_count(char *str)
 {

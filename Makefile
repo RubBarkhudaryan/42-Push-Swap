@@ -1,41 +1,45 @@
-NAME	=	push_swap
-CHECKER	=	checker
+NAME		=	push_swap
+CHECKER		=	checker
 
-CC		=	cc
-CFLAGS	=	-Wall -Wextra -Werror -g3
+CC			=	cc
+CFLAGS		=	-Wall -Wextra -Werror -g3
 
-SRCS	=	ps_main.c\
-			ps_validation.c ps_utils.c ps_init_stack.c ps_sort_stack.c ps_sort_little_stack.c\
-			ps_indexation.c\
-			ps_ft_split.c ps_libft_funcs.c ps_libft_funcs_2.c\
-			ps_push_operations.c ps_swap_operations.c ps_rotate_operations.c ps_reverse_rotate_operations.c
+SRCS		=	src/ps_main.c\
+				src/ps_validation.c src/ps_utils.c src/ps_init_stack.c\
+				src/ps_sort_stack.c src/ps_sort_little_stack.c src/ps_sort_utils.c\
+				src/ps_indexation.c\
+				src/ps_push_operations.c src/ps_swap_operations.c src/ps_rotate_operations.c src/ps_reverse_rotate_operations.c
 
-BSRCS	=	ch_main_bonus.c ch_stack_utils.c \
-			get_next_line.c get_next_line_utils.c \
-			ps_validation.c ps_utils.c ps_init_stack.c ps_sort_stack.c ps_sort_little_stack.c\
-			ps_indexation.c\
-			ps_ft_split.c ps_libft_funcs.c ps_libft_funcs_2.c\
-			ps_push_operations.c ps_swap_operations.c ps_rotate_operations.c ps_reverse_rotate_operations.c
+BSRCS		=	bonus/main_bonus.c\
+				bonus/init_stack_bonus.c bonus/utils_2_bonus.c bonus/utils_bonus.c bonus/validation_bonus.c \
+				bonus/push_operation_bonus.c bonus/reverse_rotate_operations_bonus.c \
+				bonus/rotate_operations_bonus.c bonus/swap_operations_bonus.c
 
-OBJS	=	$(SRCS:%.c=%.o)
-BOBJS	=	$(BSRCS:%.c=%.o)
+OBJS		=	$(SRCS:%.c=%.o)
+BOBJS		=	$(BSRCS:%.c=%.o)
 
 all: $(NAME)
 
 $(NAME) : $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+	make -C ./libft
+	make -C ./libft clean
+	$(CC) $(CFLAGS) $(OBJS) ./libft/libft.a -o $(NAME)
 
-bonus: $(BOBJS)
-	$(CC) $(CFLAGS) $(BOBJS) -o $(CHECKER)
+bonus: $(CHECKER)
+
+$(CHECKER): $(BOBJS)
+	make -C ./libft
+	make -C ./libft clean
+	$(CC) $(CFLAGS) $(BOBJS) ./libft/libft.a -o $(CHECKER)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJS) $(BOBJS)
+	rm -rf $(OBJS) $(BOBJS)
 
 fclean: clean
-	rm -f $(NAME) $(CHECKER)
+	rm -rf $(NAME) $(CHECKER) ./libft/libft.a
 
 re: fclean all
 

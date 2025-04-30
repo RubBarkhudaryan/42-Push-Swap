@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ch_stack_utils.c                                   :+:      :+:    :+:   */
+/*   utils_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbarkhud <rbarkhud@student.42yerevan.am    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 17:58:26 by rbarkhud          #+#    #+#             */
-/*   Updated: 2025/04/30 20:16:54 by rbarkhud         ###   ########.fr       */
+/*   Updated: 2025/05/01 02:10:55 by rbarkhud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "bonus.h"
 
 static int	exec_instruction(char *inst, t_stack *stack)
 {
@@ -50,7 +50,7 @@ int	is_stack_sorted(t_stack	*stack)
 	{
 		instruction = get_next_line(STDIN_FILENO);
 		if (!instruction)
-			break;
+			break ;
 		if (!exec_instruction(instruction, stack))
 		{
 			get_next_line(-1);

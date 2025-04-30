@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pushswap.h                                         :+:      :+:    :+:   */
+/*   bonus.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbarkhud <rbarkhud@student.42yerevan.am    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/22 12:14:18 by rbarkhud          #+#    #+#             */
-/*   Updated: 2025/04/22 20:52:02 by rbarkhud         ###   ########.fr       */
+/*   Created: 2025/05/01 00:01:17 by rbarkhud          #+#    #+#             */
+/*   Updated: 2025/05/01 00:01:17 by rbarkhud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSHSWAP_H
+#ifndef BONUS_H
 
-# define PUSHSWAP_H
+# define BONUS_H
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <limits.h>
+# include "../libft/libft.h"
 
 typedef struct s_node
 {
@@ -31,19 +29,11 @@ typedef struct s_stack
 	t_node	*b;
 }	t_stack;
 
-/*libft functions*/
-int		ft_atoi(char *str);
-int		ft_inset(char *str, char c);
-int		ft_strlen(char *str);
-int		ft_strcmp(char *str1, char *str2);
-int		ft_isdigit(int c);
-int		ft_isalpha(int c);
-
-char	*ft_strdup(char *str);
-char	*ft_strjoin(char *str1, char *str2);
-char	*ft_strncpy(char *str, int start, int end);
-char	**ft_split(char *str);
-char	*ft_substr(char *str, unsigned int start, size_t len);
+typedef struct s_line
+{
+	char	*join;
+	char	**sp;
+}	t_line;
 
 /*push swap utils*/
 int		is_valid_arg(char **str, int len);
@@ -57,6 +47,9 @@ void	ft_error(char **split);
 void	free_split(char ***split);
 void	free_stack(t_stack *stack);
 void	print_operation(char *operation);
+
+/*checker main function*/
+int		is_stack_sorted(t_stack	*stack);
 
 /*swap instructions*/
 void	sa(t_stack **stack, int print);
@@ -76,14 +69,5 @@ void	rr(t_stack **stack, int print);
 void	rra(t_stack **stack, int print);
 void	rrb(t_stack **stack, int print);
 void	rrr(t_stack **stack, int print);
-
-/*push swap sorting algorithms*/
-void	sort_stack(t_stack *stack);
-void	sort_2(t_stack *stack);
-void	sort_3(t_stack *stack);
-void	sort_4(t_stack *stack);
-void	sort_5(t_stack **stack);
-void	assign_indexes(t_node *head);
-void	butterfly_sort(t_stack *stack, int len);
 
 #endif

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "libft.h"
 
 static void	parse_buff(char **clean_line, char **tmp)
 {
@@ -21,7 +21,7 @@ static void	parse_buff(char **clean_line, char **tmp)
 	if (new_line_pos)
 	{
 		if (*clean_line)
-			*clean_line = get_strjoin(*clean_line, \
+			*clean_line = ft_get_strjoin(*clean_line, \
 			ft_substr(*tmp, 0, new_line_pos - *tmp + 1));
 		else
 			*clean_line = ft_substr(*tmp, 0, new_line_pos - *tmp + 1);
@@ -35,7 +35,7 @@ static void	parse_buff(char **clean_line, char **tmp)
 	}
 	else
 	{
-		*clean_line = get_strjoin(*clean_line, *tmp);
+		*clean_line = ft_get_strjoin(*clean_line, *tmp);
 		free(*tmp);
 		*tmp = NULL;
 	}
@@ -62,11 +62,12 @@ static char	*read_line(int fd, char **tmp)
 			return (NULL);
 		}
 		buff[size] = '\0';
-		*tmp = get_strjoin(*tmp, buff);
+		*tmp = ft_get_strjoin(*tmp, buff);
 	}
 	free(buff);
 	return (*tmp);
 }
+
 char	*get_next_line(int fd)
 {
 	char		*line;

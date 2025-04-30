@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ch_main_bonus.c                                    :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbarkhud <rbarkhud@student.42yerevan.am    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/30 18:00:23 by rbarkhud          #+#    #+#             */
-/*   Updated: 2025/04/30 18:00:23 by rbarkhud         ###   ########.fr       */
+/*   Created: 2025/05/01 00:03:37 by rbarkhud          #+#    #+#             */
+/*   Updated: 2025/05/01 00:03:37 by rbarkhud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./checker.h"
-#include <stdio.h>
-// static void	print_stack(t_node *lst)
-//  {
-//  	t_node *tmp = lst;
-//  	while (tmp)
-//  	{
-//  		printf("val: %d, index: %d\n", tmp->val, tmp->index);
-//  		tmp = tmp->next;
-//  	}
-//  }
+#include "bonus.h"
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	int		status;
 	char	**split;
