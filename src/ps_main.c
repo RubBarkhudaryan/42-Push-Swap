@@ -12,6 +12,20 @@
 
 #include "pushswap.h"
 
+static int	is_sorted(t_node *list)
+{
+	t_node	*tmp;
+
+	tmp = list;
+	while (tmp->next)
+	{
+		if (tmp->val > tmp->next->val)
+			return (0);
+		tmp = tmp->next;
+	}
+	return (1);
+}
+
 void	sort_stack(t_stack *stack)
 {
 	int	len;
@@ -36,12 +50,15 @@ int	main(int argc, char **argv)
 {
 	t_stack	*stack;
 	char	**split;
+	int		status;
 
 	if (argc >= 2 && is_valid_arg(argv, argc))
 	{
 		split = split_args(argc, argv);
 		stack = init_stack(split);
-		sort_stack(stack);
+		status = is_sorted(stack->a);
+		if (!status)
+			sort_stack(stack);
 		free_split(&split);
 		free_stack(stack);
 	}

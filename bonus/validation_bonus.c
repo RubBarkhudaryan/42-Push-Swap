@@ -114,9 +114,7 @@ int	is_valid_arg(char **str, int len)
 			return (ft_error(l.sp), 0);
 		if (ft_strlen(l.sp[i]) > 1 && l.sp[i][0] == '0')
 			return (ft_error(l.sp), 0);
-		if ((ft_atoi(l.sp[i]) == 0 && ft_strlen(l.sp[i]) > 1) || \
-	(ft_atoi(l.sp[i]) && ft_strlen(l.sp[i]) > 1 && \
-	ft_inset("+-", l.sp[i][ft_strlen(l.sp[i]) - 1])))
+		if (!atoi_check(l.sp[i]))
 			return (ft_error(l.sp), 0);
 		if ((ft_strcmp(l.sp[i], "-") == 0) || (ft_strcmp(l.sp[i], "+") == 0))
 			return (ft_error(l.sp), 0);

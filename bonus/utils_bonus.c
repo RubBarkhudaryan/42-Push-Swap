@@ -6,7 +6,7 @@
 /*   By: rbarkhud <rbarkhud@student.42yerevan.am    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 17:58:26 by rbarkhud          #+#    #+#             */
-/*   Updated: 2025/05/01 02:10:55 by rbarkhud         ###   ########.fr       */
+/*   Updated: 2025/05/01 17:44:58 by rbarkhud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int	exec_instruction(char *inst, t_stack *stack)
 	else if (!ft_strcmp("ss\n", inst))
 		return (ss(&stack, 0), 1);
 	else
-		return (ft_error(NULL), 0);
+		return (0);
 }
 
 int	is_stack_sorted(t_stack	*stack)
@@ -65,5 +65,19 @@ int	is_stack_sorted(t_stack	*stack)
 			return (0);
 		tmp = tmp->next;
 	}
+	return (1);
+}
+
+int	atoi_check(char *str)
+{
+	int	val;
+	int	str_len;
+
+	val = ft_atoi(str);
+	str_len = ft_strlen(str);
+	if (val == 0 && str_len > 1)
+		return (0);
+	if (val && str_len > 1 && ft_inset("+-", str[str_len - 1]))
+		return (0);
 	return (1);
 }

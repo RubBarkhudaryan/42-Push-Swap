@@ -38,6 +38,7 @@ typedef struct s_line
 /*push swap utils*/
 int		is_valid_arg(char **str, int len);
 int		stack_length(t_node *stack);
+int		atoi_check(char *str);
 
 char	*join_args(int argc, char **argv);
 char	**split_args(int argc, char **argv);

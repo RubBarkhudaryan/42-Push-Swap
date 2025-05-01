@@ -12,21 +12,20 @@
 
 #include "libft.h"
 
-static void	parse_buff(char **clean_line, char **tmp)
+static void	parse_buff(char **ln, char **tmp)
 {
-	char	*new_line_pos;
+	char	*n_ln;
 	char	*temp;
 
-	new_line_pos = ft_strchr(*tmp, '\n');
-	if (new_line_pos)
+	n_ln = ft_strchr(*tmp, '\n');
+	if (n_ln)
 	{
-		if (*clean_line)
-			*clean_line = ft_get_strjoin(*clean_line, \
-			ft_substr(*tmp, 0, new_line_pos - *tmp + 1));
+		if (*ln)
+			*ln = get_strjoin(*ln, ft_substr(*tmp, 0, (n_ln - *tmp) + 1));
 		else
-			*clean_line = ft_substr(*tmp, 0, new_line_pos - *tmp + 1);
-		if (*(new_line_pos + 1))
-			temp = ft_strdup(new_line_pos + 1);
+			*ln = ft_substr(*tmp, 0, (n_ln - *tmp + 1));
+		if (*(n_ln + 1))
+			temp = ft_strdup(n_ln + 1);
 		else
 			temp = NULL;
 		free(*tmp);
@@ -35,7 +34,7 @@ static void	parse_buff(char **clean_line, char **tmp)
 	}
 	else
 	{
-		*clean_line = ft_get_strjoin(*clean_line, *tmp);
+		*ln = get_strjoin(*ln, *tmp);
 		free(*tmp);
 		*tmp = NULL;
 	}
@@ -62,7 +61,7 @@ static char	*read_line(int fd, char **tmp)
 			return (NULL);
 		}
 		buff[size] = '\0';
-		*tmp = ft_get_strjoin(*tmp, buff);
+		*tmp = get_strjoin(*tmp, buff);
 	}
 	free(buff);
 	return (*tmp);

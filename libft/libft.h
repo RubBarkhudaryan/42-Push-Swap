@@ -33,7 +33,7 @@ int		ft_isalpha(int c);
 
 char	*ft_strdup(char *str);
 char	*ft_strjoin(char *str1, char *str2);
-char	*ft_get_strjoin(char *str1, char *str2);
+char	*get_strjoin(char *str1, char *str2);
 char	*ft_strncpy(char *str, int start, int end);
 char	**ft_split(char *str);
 char	*ft_substr(char *str, unsigned int start, size_t len);

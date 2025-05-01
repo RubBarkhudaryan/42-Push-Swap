@@ -8,7 +8,7 @@ ARFLAGS	=	-rcs
 
 RM		=	rm -rf
 
-SRCS	=	ft_atoi.c ft_get_strjoin.c ft_inset.c ft_isalpha.c \
+SRCS	=	ft_atoi.c get_strjoin.c ft_inset.c ft_isalpha.c \
 			ft_isdigit.c ft_strchr.c ft_strcmp.c ft_strdup.c \
 			ft_strjoin.c ft_strlen.c ft_strncpy.c ft_substr.c \
 			ft_split.c get_next_line.c
